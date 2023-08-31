@@ -1,6 +1,7 @@
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
 import SlimSelect from 'slim-select';
 import 'slim-select/dist/slimselect.css';
+import Notiflix from 'notiflix';
 
 const elements = {
   select: document.querySelector('.breed-select'),
@@ -24,7 +25,9 @@ fetchBreeds()
     });
   })
   .catch(error => {
-    Notify.failure(`Oops! Something went wrong! Try reloading the page!`);
+    Notiflix.Notify.failure(
+      `Oops! Something went wrong! Try reloading the page!`
+    );
   })
   .finally(() => elements.loader.classList.replace('loader', 'loader-hidden'));
 
@@ -45,7 +48,10 @@ function handlerSelect(evt) {
       elements.catInfo.innerHTML = createMarkup(resp);
     })
     .catch(error => {
-      Notify.failure(`Oops! Something went wrong! Try reloading the page!`);
+      elements.catInfo.classList.replace('cat-info', 'cat-info-hidden');
+      Notiflix.Notify.failure(
+        `Oops! Something went wrong! Try reloading the page!`
+      );
     })
     .finally(() =>
       elements.loader.classList.replace('loader', 'loader-hidden')

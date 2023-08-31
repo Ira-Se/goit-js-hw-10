@@ -16,7 +16,9 @@ function fetchBreeds() {
       return resp.data;
     })
     .catch(error => {
-      Notify.failure(`Oops! Something went wrong! Try reloading the page!`);
+      Notiflix.Notify.failure(
+        `Oops! Something went wrong! Try reloading the page!`
+      );
     });
 }
 
@@ -30,7 +32,9 @@ function fetchCatByBreed(breedId) {
       return resp.data;
     })
     .catch(error => {
-      Notify.failure(`Oops! Something went wrong! Try reloading the page!`);
+      Notiflix.Notify.failure(
+        `Oops! Something went wrong! Try reloading the page!`
+      );
     });
 }
 
